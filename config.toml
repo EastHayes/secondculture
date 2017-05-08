@@ -1,0 +1,69 @@
+baseurl = "https://secondculturekid.com/"
+languageCode = "jp"
+title = "The Second Culture Kid"
+googleAnalytics = "UA-97050558-1"
+
+[Params]
+   subtitle = "Brought to you from San Francisco"
+  logo = "img/avatar-icon.png"
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+  comments = true
+
+
+#[[Params.bigimg]]
+#  src = "img/triangle.jpg"
+#  desc = "Triangle"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
+
+
+
+[[menu.main]]
+	    name = "ホーム"
+	    url = "/"
+	    weight = 1
+
+
+[[menu.main]]
+    identifier = "popular"
+    name = "人気記事"
+    weight = 2
+    
+    [[menu.main]]
+	    name = "タグ一覧"
+	    url = "/tags"
+	    weight = 3
+
+[[menu.main]]
+    parent = "popular"
+    name = "② Hello world (again)"
+    url = "/post/first-post"
+    weight = 2
+
+[[menu.main]]
+    parent = "popular"
+    name = "③ Hugo Blog"
+    url = "/post/hosting-hugo-on-ghp"
+    weight = 3
+
+[[menu.main]]
+    parent = "popular"
+    name = "① サンフラン..."
+    url = "/post/sf-cost-of-living"
+    weight = 1
+    
+[[menu.main]]
+    parent = "popular"
+    name = "全部見る"
+    url = "/page/popular-posts"
+    weight = 4
+
+
+

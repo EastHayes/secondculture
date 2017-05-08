@@ -1,0 +1,8 @@
+[submodule "public"]
+	path = public
+	url = https://github.com/EastHayes/EastHayes.github.io.git
+	branch = master
+[submodule "EastHayes.github.io"]
+	path = EastHayes.github.io
+	url = https://github.com/EastHayes/EastHayes.github.io.git
+	branch = master

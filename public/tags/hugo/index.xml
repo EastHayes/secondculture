@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on The Second Culture Kid</title>
+    <link>https://secondculturekid.com/tags/hugo/index.xml</link>
+    <description>Recent content in Hugo on The Second Culture Kid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <atom:link href="https://secondculturekid.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hugoブログ</title>
+      <link>https://secondculturekid.com/post/hosting-hugo-on-ghp/</link>
+      <pubDate>Sun, 26 Mar 2017 00:46:34 -0700</pubDate>
+      
+      <guid>https://secondculturekid.com/post/hosting-hugo-on-ghp/</guid>
+      <description>
+
+&lt;h3 id=&#34;hugo-github-pages&#34;&gt;Hugo &amp;amp; GitHub Pages&lt;/h3&gt;
+
+&lt;p&gt;せっかくHugoでブログを書いているので、HugoのインストールからGitHub Pagesにデプロイするまでの方法を紹介します。
+公式チュートリアルは全部英語なので、これからHugoを使おうと思っている人の参考になれば。自分用にもメモ。&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hugoとは&#34;&gt;Hugoとは&lt;/h3&gt;
+
+&lt;p&gt;一般的にウェブサイトは、ユーザーがページを訪問する度にウェブサーバが動的にHTMLファイルを生成する仕組みになっています。Hugoは、Markdownで書かれたコンテンツをHTMLとしてレンダリングし、ウェブサイトを事前に生成する静的サイトジェネレータです。ウェブサーバが動的にページをビルドする必要がないため、ページが表示されるまでの時間が短縮されます。静的サイトジェネレータはGo言語で書かれたHugoの他にも、Rubyで書かれたJekyllやOctopressなどがあります。&lt;/p&gt;
+
+&lt;h3 id=&#34;ローカルでセットアップ&#34;&gt;ローカルでセットアップ&lt;/h3&gt;
+
+&lt;p&gt;①〜④でHugoのインストールからテーマの適用までをカバーします。&lt;br&gt;
+＊このステップが既に完了している方はこちらへ → &lt;a href=&#34;#ref-1&#34;&gt;HugoをGitHub Pagesにデプロイする&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;① Hugoをインストール&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;ここから&lt;/a&gt;最新verをダウンロードするか、Homebrewを使って&lt;code&gt;$ brew install hugo&lt;/code&gt;でインストールしてください。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;② 新しいプロジェクトを作成&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ cd&lt;/code&gt;でホームディレクトリに移動して、&lt;code&gt;$ hugo new site &amp;lt;project&amp;gt;&lt;/code&gt; で新しいプロジェクトを作ります。
+&lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;にはプロジェクト名を入れてください。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;③ テーマを選択&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;Hugo Themesレポジトリ&lt;/a&gt;から、テーマを選んでthemeディレクトリにクローンしてください。
+&lt;code&gt;&amp;lt;theme_URL&amp;gt;&lt;/code&gt;はテーマリポジトリのURLと置き換えてください。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code=shell&gt;$ cd themes  
+$ git clone &amp;lt;theme_URL&amp;gt;　
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;④ ローカルでプレビュー&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ hugo server -t &amp;lt;theme&amp;gt;&lt;/code&gt; でHugoをローカルで立ち上げて、&lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt; でサイトが正しく表示されていることを確認してください。
+問題がなければCtrl+Cでサーバを止めてください。&lt;/p&gt;
+
+&lt;p&gt;記事の追加は&lt;code&gt;$ hugo new post/new-post.md&lt;/code&gt;で簡単にできます。
+&lt;a id=&#34;ref-1&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;hugoをgithub-pagesにデプロイする&#34;&gt;HugoをGitHub Pagesにデプロイする&lt;/h3&gt;
+
+&lt;p&gt;ここからはプロジェクトをGithub Pagesにホスティングをする方法を説明します。&lt;/p&gt;
+
+&lt;p&gt;まず、GitHubに2つのリポジトリを用意します。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;リポジトリ (必ずこの名前を使ってください) &lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;リポジトリ（プロジェクト名や好きな名前を使ってください)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;リポジトリはUser PagesというGitHub Pagesフォルダ専用のリポジトリで、必ずこのネーミングスキームである必要があります。ここにpublicフォルダを追加します。&lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;リポジトリには、ブログのコンテンツを追加します。&lt;/p&gt;
+
+&lt;p&gt;リモートリポジトリを用意したら、ローカルリポジトリにリモートを追加して、全てをステージングエリアに登録しておきます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code=shell&gt;$ cd &amp;lt;project&amp;gt;
+$ git init
+$ git remote add origin https://github.com/&amp;lt;username&amp;gt;/&amp;lt;project&amp;gt;.git
+$ git add .&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;次に、&lt;code&gt;$ hugo -t &amp;lt;theme&amp;gt;&lt;/code&gt;でpublicフォルダを作成して、&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;リポジトリをサブモジュールとして追加します。
+publicフォルダが既にある場合は&lt;code&gt;$ rm -rf public&lt;/code&gt;で削除してください。&lt;code&gt;$ hugo -t &amp;lt;theme&amp;gt;&lt;/code&gt;は既に存在するpublicフォルダを削除してくれないので、&lt;strong&gt;毎回自分で削除する必要があります&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code=shell&gt;$ hugo -t &amp;lt;theme&amp;gt;
+$ cd public
+$ git init
+$ cd ..
+$ git submodule add https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここまでの作業をコミットし、 &lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;リポジトリにpushします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code=sh&gt;$ git commit -m &#34;generate project&#34;
+$ git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最後に、&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;リポジトリにpublicフォルダをpushします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code=sh&gt;$ cd public
+$ git remote add public https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git
+$ git add .
+$ git commit -m &#34;generate static site&#34;
+$ git push public master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;https://&amp;lt;username&amp;gt;.github.io にアクセスすればブログを確認できます。&lt;br&gt;
+postの内容を反映させるには、MDファイルの&lt;code&gt;draft=true&lt;/code&gt;を削除してください。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
