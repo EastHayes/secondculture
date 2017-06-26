@@ -1,5 +1,6 @@
 ---
-title: ""
+title = "The Second Culture Kid"
+description = "サンフランススコブログ"
 subtitle: ""
 comments: false
 ---

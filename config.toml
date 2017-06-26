@@ -1,8 +1,6 @@
 baseurl = "https://secondculturekid.com/"
 languageCode = "jp"
-title = "The Second Culture Kid"
 googleAnalytics = "UA-97050558-1"
-description = "サンフランススコブログ"
 
 
 [Params]
