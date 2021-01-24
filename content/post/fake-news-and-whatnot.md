@@ -2,7 +2,7 @@
 date = "2017-05-14T18:33:46-07:00"
 title = "Facebookに出てくる広告がフェイクニュースな件"
 tags = ["Marketing"]
-draft = true
+draft = false
 +++
 
 2016年末に偽ニュース対策を発表したばかりのFacebookですが、タイムラインを眺めてたら、↓のような広告が出てきました。
